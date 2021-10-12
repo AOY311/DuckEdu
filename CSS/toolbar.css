@@ -1,0 +1,213 @@
+.header {
+    height: 89px;
+}
+
+.header-contener {
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    width: 100%;
+    padding: 10px 20px;
+    background: white;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+.contener {
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    min-width: auto;
+    margin: 0 auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    max-width: 1240px;
+}
+
+#logo_home {
+    width: 226px;
+    height: 53px;
+    left: 39px;
+    top: 8px;
+    margin-right: 50px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+#searchIcon>img {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 375px;
+    top: 20px;
+}
+
+#searchInput {
+    box-sizing: content-box;
+    height: 40px;
+    width: 325px;
+    padding: 0 46px 0 10px;
+    border-color: #888;
+    border-radius: 35px;
+    border-style: solid;
+    border-width: 2px;
+    margin-top: 15px;
+    color: #333;
+    font-size: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.search {
+    display: inline-block;
+    align-items: center;
+    position: relative;
+}
+
+.btn-search {
+    background-color: transparent;
+    border: none;
+    color: none;
+    cursor: pointer;
+}
+
+.button-38 {
+    background-color: #FFFFFF;
+    border: 0;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #111827;
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.button-38:hover {
+    background-color: rgb(249, 250, 251);
+}
+
+.button-38:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.button-38:focus-visible {
+    box-shadow: none;
+}
+
+.side-right span:not(:first-child) {
+    margin-left: 10px;
+}
+
+ul {
+    background: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.header_ul>ul li {
+    padding: 0 10px;
+}
+
+.header_ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header_ul>li {
+    list-style: none;
+    float: left;
+    width: 150px;
+    height: 65px;
+    line-height: 65px;
+    position: relative;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.setting a {
+    cursor: pointer;
+}
+
+ul.drop {
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 100%;
+    padding: 0;
+    border-radius: 0px;
+}
+
+ul.drop li {
+    display: none;
+    text-align: left;
+    width: 150px;
+    margin: 0px;
+    background: white;
+    border-radius: 0px;
+    align-items: center;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+ul.drop li:hover {
+    background: rgb(235, 234, 234);
+}
+
+.setting {
+    background: rgb(80, 150, 255) !important;
+    border-radius: 0px;
+}
+
+ul.drop {
+    border-radius: 0px 0px 5px 5px;
+    overflow: hidden;
+}
+
+li:hover {
+    background: rgba(218, 216, 216, 0.3);
+    border-radius: 5px 5px 0 0;
+}
+
+li:hover>ul.drop li {
+    display: block;
+    z-index: 10;
+}
+
+ul.setting li {
+    background: rgb(109, 189, 255);
+    display: none;
+}
+
+ul.drop.setting li:hover {
+    background: rgb(86, 154, 255);
+    color: white;
+}
+
+@media only screen and (max-width: 500px) {
+    .option {
+        float: left;
+    }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="panel-create-teacher ">
+        <div class="text-create-teacher">
+            <h1>
+                CREATE TEACHER ACCOUNT
+            </h1>
+        </div>
+        <div class=" form">
+            <form class="input-create-teacher" action="#" method="POST" onsubmit="return checkAllData()">
+
+                <div class="inline">
+                    <input type="text" name="firstname" id="firstname" placeholder="First Name" required>
+                    <input type="text" name="lastname" id="lastname" placeholder="Last Name" required>
+                </div>
+
+                <span class="error" id="errFirstname">First Name must be characters. </span>
+                <span class="error" id="errLastname">Last Name must be characters. </span>
+
+                <div class="inline">
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                </div>
+
+                <span class="error" id="errUsername">Username must be from 6 to 30 characters and no start number.</span>
+                <div class="inline">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                </div>
+
+                <span class="error" id="errPassword">Password must be from 6 to 30 characters.</span>
+                <div class="inline">
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
+                </div>
+                <span class="error" id="errConfpass">Password doesn't match.</span>
+                <div class="inline">
+                    <input type="date" name="dob" id="dob" placeholder="Date of Birth" required>
+                </div>
+                <span class="error" id="errDob">Date of Birth must be less than current day</span>
+                <div class="inline">
+                    <input type="text" name="email" id="email" placeholder="Email" required>
+                    <input type="text" name="phone" id="phone" placeholder="Phone Number" required>
+                </div>
+                <div class="inline">
+                    <input type="text" name="address" id="address" placeholder="Address" required>
+                </div>
+                <div class="inline">
+                    <input type="text" name="major" id="major" placeholder="Major">
+                </div>
+                <span class="error" id="errEmail">Email don't valid</span>
+                <span class="error" id="errPhone">Phone must be 10 number</span>
+
+                <span class="error" id="errAddress">Address don't valid. Please enter your address.</span>
+
+                <span class="error" id="errMajor">Major don't valid.</span>
+                <button class="btn-register button-38">Register</button>
+                <p id="successful">Successful</p>
+                <p id="fail">Fail</p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Question</title>
+    <link rel="stylesheet" href="CSS/sendQuestion.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="send_question">
+        <form action="#" class="form-question">
+            <div class="select-input">
+                <label for="course" class="label-name">Course: </label>
+                <select name="course" id="courses">
+            <option value="#">Database</option>
+            <option value="#">Java</option>
+            <option value="#">Web Desgin</option>
+          </select>
+                <label for="mentor" class="label-name">Mentor: </label>
+                <select name="mentor" id="mentors">
+            <option value="#">DaQL</option>
+            <option value="#">LanLTT</option>
+            <option value="#">KhanhVH</option>
+          </select>
+            </div>
+
+            <span class="span_title">
+          Title: <input type="text" class="title" required />
+        </span>
+
+            <div class="span_question">
+                Question: <textarea class="text" required></textarea>
+                <div class="upload">
+                    <input type="file" name="file-upload" id="file-up" />
+                </div>
+            </div>
+            <span class="btn">
+          <button class="btn-send">SEND</button>
+          <span class="btn-upload" id="btn-upload">UPLOAD</span>
+            </span>
+        </form>
+    </div>
+    <script>
+        $(".btn-upload").click(function() {
+            $(".upload").show();
+        });
+    </script>
+</body>
+
+</html>

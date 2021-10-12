@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="teacherProfile form500">
+        <div>
+            <nav>
+                <h1>Teacher Profile</h1>
+            </nav>
+        </div>
+
+        <div class="content-form">
+            <div class="form ">
+                <form action="admin.jsp?#editTeacher">
+                    <div class="form-header">
+                        <span>
+                            <h2>Nguyen Tran Thanh Thu Y</h2>
+                        </span>
+                        <span>
+                            <button class="button-39" role="button">EDIT</button>
+                        </span>
+                    </div>
+                    <div class="inline">
+                        <input id="firstname" type="text" name="fname" value="Nguyen" disabled>
+                        <input id="lastname" type="text" name="lname" value="Thuy" disabled>
+                    </div>
+                    <div class="inline">
+                        <input id="dob" type="text" name="dob" value="<%=(new java.util.Date()).toLocaleString()%>" disabled>
+                        <input id="major" type="text" name="major" value="Major" disabled>
+                    </div>
+
+                    <div class="inline">
+                        <input id="email" type="email" name="email" value="ThuyMDCE@123.abc.com" disabled><br>
+                        <input id="phone" type="phone" name="Phone" value="0123123123" disabled><br>
+                    </div>
+                    <div class="inline">
+                        <input id="address" type="address" name="address" value="123. DL" disabled><br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
