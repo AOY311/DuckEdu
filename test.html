@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        
+         ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .contener {
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+            background: red;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .side-bar {
+            position: relative;
+            background: green;
+            width: 25%;
+        }
+        
+        .m-panel {
+            background: yellow;
+            width: 75%;
+        }
+        
+        .newMessage {
+            position: fixed;
+            width: inherit;
+            height: 70px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contener">
+        <div class="side-bar">
+            <div class="newMessage"></div>
+        </div>
+        <div class="m-panel"></div>
+    </div>
+</body>
+
+</html>
