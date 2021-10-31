@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEST</title>
+    <link rel="stylesheet" href="test_site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .test-form {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            padding-left: 20px;
+        }
+        
+        .test-name {
+            letter-spacing: 1.5px;
+            font-size: 30px;
+        }
+        
+        .point {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+        }
+        
+        .answer {
+            margin-bottom: 40px;
+        }
+        
+        .input-ans {
+            padding: 6px;
+            width: 80%;
+            line-height: 25px;
+            outline: none;
+        }
+        
+        .no-ques {
+            background-color: #f2f2f2;
+            padding: 6px 8px;
+            margin-bottom: 15px;
+        }
+        
+        .btn-test {
+            padding: 8px;
+            background-color: #1abc9c;
+            color: #fff;
+            border: 1px solid #fff;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            border-radius: 5px;
+            float: right;
+            margin-bottom: 30px;
+        }
+        
+        .btn-test:hover {
+            opacity: 0.8;
+        }
+        
+        .ftb {
+            cursor: pointer;
+            line-height: 30px;
+            width: 50px;
+        }
+        
+        #checkmark {
+            display: none;
+        }
+        
+        #times1,
+        #times2,
+        #times3 {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" class="test-form">
+        <h1 class="test-name">TEST NAME</h1>
+        <p class="point">TOTAL POINTS</p>
+
+        <div class="no-ques">
+            <div class="question">
+                <p class="ques">
+                    <b>Question 1:</b> Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin rhonc us urna dictum.
+                </p>
+                <p class="desc-ques">
+                    Description: Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin rhonc us urna dictum.
+                </p>
+            </div>
+
+            <div class="answer">
+                <input type="text" placeholder="Answer.." class="input-ans" />
+            </div>
+        </div>
+
+        <div class="no-ques">
+            <div class="question">
+                <p class="ques">
+                    <b>Question 2:</b> Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin rhonc us urna dictum.
+                </p>
+
+                <p class="desc-ques">
+                    Description: Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin rhonc us urna dictum.
+                </p>
+            </div>
+
+            <div class="answer">
+                <input type="radio" name="rad" id="a_ans" value="a" />
+                <label for="a_ans">Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin
+            rhonc us urna dictum.</label
+          >
+          <br />
+          <input type="radio" name="rad" id="b_ans" value="b" />
+          <label for="b_ans"
+            >Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin
+            rhonc us urna dictum.</label
+          ><br />
+          <input type="radio" name="rad" id="c_ans" value="c" />
+          <label for="c_ans"
+            >Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin
+            rhonc us urna dictum.</label
+          ><br />
+          <input type="radio" name="rad" id="d_ans" value="d" />
+          <label for="d_ans"
+            >Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin
+            rhonc us urna dictum.</label
+          ><br />
+        </div>
+      </div>
+
+      <div class="no-ques">
+        <div class="question">
+          <p class="ques">
+            <b>Question 3:</b> Lorem ipsum dolor sit amet conse ctetur adip iscing
+            elit Proin rhonc us urna dictum.
+          </p>
+
+          <p class="desc-ques">
+            Description: Lorem ipsum dolor sit amet conse ctetur adip iscing
+            elit Proin rhonc us urna dictum.
+          </p>
+        </div>
+
+        <div class="answer">
+          <input type="checkbox" name="ans" id="ans1" />
+          <label for="ans1"
+            >Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin
+            rhonc us urna dictum.</label
+          ><br />
+          <input type="checkbox" name="ans" id="ans2" />
+          <label for="ans2"
+            >Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin
+            rhonc us urna dictum.</label
+          ><br />
+          <input type="checkbox" name="ans" id="ans3" />
+          <label for="ans3"
+            >Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin
+            rhonc us urna dictum.</label
+          ><br />
+          <input type="checkbox" name="ans" id="ans4" />
+          <label for="ans4"
+            >Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin
+            rhonc us urna dictum.</label
+          ><br />
+        </div>
+      </div>
+      
+      </div>
+      <button type="submit" class="btn-test">SUBMIT</button>
+    </form>
+
+  
+  </body>
+</html>

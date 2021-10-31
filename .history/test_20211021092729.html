@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Message</title>
+    <style>
+        /* chat */
+        
+        body {
+            margin: 0px;
+        }
+        
+        .block-message {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-contener {
+            height: auto;
+            overflow: auto;
+        }
+        
+        .p1,
+        .p2 {
+            display: flex;
+        }
+        
+        .p2 {
+            flex-direction: row-reverse;
+        }
+        
+        div.message {
+            max-width: 75%;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            text-align: justify;
+            padding: 7px 12px 8px 12px;
+            font-size: 15px;
+            border-radius: 5px;
+            color: #050505;
+            font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+        }
+        
+        .p1 .message {
+            background: #e4e6eb;
+        }
+        
+        .p2 .message {
+            background: #0084ff;
+            color: aliceblue;
+            margin-left: auto;
+        }
+        /* ___----------------------------------------------- */
+        
+        .second {
+            bottom: 0px;
+        }
+        
+        #from_a {
+            position: fixed;
+            bottom: 0px;
+            background: red;
+            width: inherit;
+            display: flex;
+            height: auto;
+        }
+        
+        #div_from {
+            width: 85%;
+            display: flex;
+        }
+        
+        #div_dot {
+            width: 15%;
+            float: right;
+        }
+        
+        .file_upload {
+            display: none;
+        }
+        
+        .div_file {
+            margin-left: 2%;
+            margin-top: 2%;
+            width: auto;
+            height: auto;
+        }
+        
+        .lab_file {
+            color: black;
+            width: 150px;
+            height: 50px;
+            border: 1px solid black;
+            display: flex;
+            position: relative;
+            font-size: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+            margin-left: 0;
+            border-radius: 5px;
+            margin-bottom: 2%;
+            margin-right: 2px;
+        }
+        
+        .mess {
+            width: 90%;
+            height: 45px;
+            margin-top: 2%;
+            font-size: 20px;
+            margin-bottom: 2%;
+            margin-left: 15%;
+            border-radius: 5px;
+            resize: none;
+        }
+        
+        .sub_mess {
+            width: 70px;
+            height: 50px;
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
+            font-size: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .dropbtn {
+            color: black;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            background-color: rgb(194, 245, 187);
+            border-radius: 5px;
+            margin-left: 10%;
+            cursor: pointer;
+        }
+        
+        .dropup {
+            position: relative;
+            display: inline-block;
+            margin-top: 12%;
+            margin-left: 0;
+        }
+        
+        .dropup-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 150px;
+            bottom: 50px;
+            z-index: 1;
+        }
+        
+        .dropup-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropup-content a:hover {
+            background-color: #ccc;
+        }
+        
+        .dropup:hover .dropup-content {
+            display: block;
+        }
+        
+        .dropup:hover .dropbtn {
+            background-color: white;
+        }
+        
+        .sub_mess:hover {
+            background-color: green;
+            color: white;
+        }
+        
+        .lab_file:hover {
+            background-color: red;
+            color: white;
+        }
+        /* sendquestion */
+        
+        .form-question {
+            margin-top: 30px;
+            margin-left: 20px;
+        }
+        
+        .select-input {
+            display: flex;
+        }
+        
+        #courses,
+        #mentors {
+            width: 100%;
+        }
+        
+        .title {
+            width: 100%;
+            margin-left: 15px;
+        }
+        
+        .span_title {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .label-name {
+            font-weight: 500;
+            margin: 0 15px 0 0;
+        }
+        
+        .label-name:not(:nth-child(1)) {
+            margin-left: 20px;
+        }
+        
+        .span_question {
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .text {
+            display: block;
+            /* width: 450px; */
+            width: 100%;
+            height: 150px;
+            margin: 10px 0;
+            outline: none;
+        }
+        
+        .btn {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .btn-send,
+        .btn-upload {
+            cursor: pointer;
+            border-radius: 5px;
+            outline: none;
+            padding: 8px;
+            font-size: 14px;
+            transition: 0.25s;
+            border: 1px solid #000;
+            background-color: rgba(0, 0, 0, 0.1);
+            font-family: sans-serif;
+            margin: 15px 0;
+        }
+        
+        .btn-send:hover,
+        .btn-upload:hover {
+            background-color: #888;
+        }
+        
+        .upload {
+            display: none;
+            position: absolute;
+            top: 150px;
+            left: 5px;
+            z-index: 1;
+        }
+        /* footer */
+        
+        .footer {
+            display: flex;
+            flex-grow: 1;
+            background: rgb(39, 29, 24);
+            z-index: 10;
+        }
+        
+        .footer div:last-child {
+            color: aliceblue;
+            text-align: center;
+            margin: 0 auto;
+            padding-top: 5px;
+        }
+        
+        a:visited {
+            color: orange;
+        }
+        /* message */
+        
+        .message-body::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .message-body {
+            height: 100%;
+            margin-top: 101px;
+        }
+        
+        .message-contener {
+            display: flex;
+            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .message-side-bar {
+            width: 25%;
+            background: blanchedalmond;
+            height: 100%;
+            overflow: auto;
+        }
+        
+        .message-panel {
+            width: 75%;
+            background: white;
+            border-left: 1px #c2c2c2 solid;
+            margin-left: 5px;
+            padding: 11px;
+            overflow: auto;
+        }
+        
+        .header-message-side-bar {
+            height: 77.03px;
+            width: inherit;
+        }
+        
+        .header-message-side-bar-contener {
+            position: fixed;
+            width: 377px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border-bottom: #c2c2c2;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        
+        .message-side-bar-contener {
+            overflow: auto;
+        }
+        
+        .card-message {
+            height: 68px;
+            display: flex;
+            align-items: center;
+            background: white;
+            color: #65676b;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        
+        .card-message:not(.message-active):hover {
+            background: #f2f3f5;
+        }
+        
+        .avt img {
+            width: 56px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .title-message {
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+        
+        .message-active {
+            background: #eaf3ff;
+        }
+        /* toolbar */
+        
+        .header {
+            width: 100%;
+            float: left;
+            text-align: center;
+            position: fixed;
+            background-color: skyblue;
+            top: 0;
+        }
+        
+        .header-contener {
+            width: 100%;
+            padding: 10px 20px;
+            background: white;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+        }
+        
+        .contener {
+            height: 100%;
+            display: flex;
+            box-sizing: border-box;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            min-width: auto;
+            margin: 0 auto;
+            padding-right: 20px;
+            padding-left: 20px;
+            max-width: 1240px;
+        }
+        
+        #logo_home {
+            width: 50px;
+            left: 39px;
+            top: 8px;
+            margin-right: 5px;
+        }
+        
+        .icon {
+            width: 30px;
+            height: 30px;
+        }
+        
+        #searchIcon>img {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left: 375px;
+            top: 20px;
+        }
+        
+        #searchInput {
+            box-sizing: content-box;
+            height: 40px;
+            width: 325px;
+            padding: 0 46px 0 10px;
+            border-color: #888;
+            border-radius: 35px;
+            border-style: solid;
+            border-width: 2px;
+            margin-top: 15px;
+            color: #333;
+            font-size: 20px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        
+        #searchInput:focus {
+            border: 0px;
+        }
+        
+        .search {
+            display: inline-block;
+            align-items: center;
+            position: relative;
+        }
+        
+        .btn-search {
+            background-color: transparent;
+            border: none;
+            color: none;
+            cursor: pointer;
+        }
+        
+        .button-38 {
+            background-color: #FFFFFF;
+            border: 0;
+            border-radius: .5rem;
+            box-sizing: border-box;
+            color: #111827;
+            font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: .875rem;
+            font-weight: 600;
+            line-height: 1.25rem;
+            padding: .75rem 1rem;
+            text-align: center;
+            text-decoration: none #D1D5DB solid;
+            text-decoration-thickness: auto;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+        
+        .button-38:hover {
+            background-color: rgb(249, 250, 251);
+        }
+        
+        .button-38:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        
+        .button-38:focus-visible {
+            box-shadow: none;
+        }
+        
+        .side-right span:not(:first-child) {
+            margin-left: 10px;
+        }
+        
+        ul .drop {
+            background: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        
+        .header_ul>ul li {
+            padding: 0 10px;
+        }
+        
+        .header_ul li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header_ul>li {
+            list-style: none;
+            float: left;
+            width: 150px;
+            height: 65px;
+            line-height: 65px;
+            position: relative;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+        }
+        
+        .setting a {
+            cursor: pointer;
+        }
+        
+        ul.drop {
+            position: absolute;
+            top: 100%;
+            left: 0%;
+            width: 100%;
+            padding: 0;
+            border-radius: 0px;
+        }
+        
+        ul.drop li {
+            display: none;
+            text-align: left;
+            width: 150px;
+            margin: 0px;
+            background: white;
+            border-radius: 0px;
+            align-items: center;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+        
+        ul.drop li:hover {
+            background: rgb(235, 234, 234);
+        }
+        
+        .setting {
+            background: rgb(80, 150, 255) !important;
+            border-radius: 0px;
+        }
+        
+        ul.drop {
+            border-radius: 0px 0px 5px 5px;
+            overflow: hidden;
+        }
+        
+        li:hover {
+            background: rgba(218, 216, 216, 0.3);
+            border-radius: 5px 5px 0 0;
+        }
+        
+        li:hover>ul.drop li {
+            display: block;
+            z-index: 10;
+        }
+        
+        ul.setting li {
+            background: rgb(109, 189, 255);
+            display: none;
+        }
+        
+        ul.drop.setting li:hover {
+            background: rgb(86, 154, 255);
+            color: white;
+        }
+        
+        @media only screen and (max-width: 500px) {
+            .option {
+                float: left;
+            }
+        }
+        
+        #DuckEdu {
+            display: none;
+        }
+        
+        .side-left span:hover>#DuckEdu {
+            display: inline-block;
+            -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        }
+        
+        .tracking-in-expand {
+            -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        }
+        
+        .list-result-search {
+            display: none;
+            position: absolute;
+            width: 100%;
+            flex-direction: column;
+            background: transparent;
+            /* display: flex; */
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .result-search {
+            width: 75%;
+            height: 50px;
+            background: white;
+            padding: 5px;
+            border: 1px solid;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+        
+        .result-search:hover {
+            background: #D1D5DB;
+        }
+        
+        .result-search data {
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+        /* ----------------------------------------------
+ * Generated by Animista on 2021-10-16 23:8:53
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+        /**
+ * ----------------------------------------
+ * animation tracking-in-expand
+ * ----------------------------------------
+ */
+        
+        @-webkit-keyframes tracking-in-expand {
+            0% {
+                letter-spacing: -0.5em;
+                opacity: 0;
+            }
+            40% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes tracking-in-expand {
+            0% {
+                letter-spacing: -0.5em;
+                opacity: 0;
+            }
+            40% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        /* _______________________________ */
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="header-contener">
+            <div class="contener">
+                <div class="side-left">
+                    <span>
+                            <a href="home.jsp" class="logo"><img id="logo_home" src="img/logo.svg" alt="logo" /></a>
+                            <div id="DuckEdu">DUCK EDU</div>
+                        </span>
+                    <span>
+                            <div class="search">
+                                <form action="#" method="GET">
+                                    <button class="icon btn-search" id="searchIcon" type="submit">
+                                        <img src="img/search.png" alt="" />
+                                    </button>
+                                    <input type="text" id="searchInput" placeholder="Search" />
+                                </form>
+                                <div class="list-result-search">
+                                    <div class="result-search" id="a1" role="button">
+                                        <data>abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc</data>
+                                    </div>
+                                    <div class="result-search" id="a2" role="button">abc</div>
+                                    <div class="result-search" id="a3" role="button">abc</div>
+                                    <div class="result-search" id="a4" role="button">abc</div>
+                                    <div class="result-search" id="a5" role="button">abc</div>
+                                    <div class="result-search" id="a6" role="button">abc</div>
+                                </div>
+                            </div>
+                        </span>
+                </div>
+                <div class="side-right">
+                    <div class="option">
+                        <nav>
+                            <ul class="header_ul">
+                                <li>
+                                    <img class="icon" src="img/bell.png" alt="" />
+                                    <ul class="drop">
+                                        <li>
+                                            <img style="width: 50px; padding-right: 10px" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <img class="icon" src="img/setting.png" alt="" />
+                                    <ul class="drop setting">
+                                        <a style="width: 100%" href="user.jsp">
+                                            <li>
+                                                <img style="width: 50px; padding-right: 10px" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> User
+                                            </li>
+                                        </a>
+                                        <a style="width: 100%" href="setting.jsp">
+                                            <li>Setting page</li>
+                                        </a>
+                                        <li>Logout</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="message-body">
+        <div class="message-contener">
+            <div class="message-side-bar">
+                <div class="header-message-side-bar">
+                    <div class="header-message-side-bar-contener">
+                        <span>
+                            <h2>Message</h2>
+                        </span>
+                        <span>
+                            <button type="button" class="button-38 btn btn-primary btn-lg" >New</button>
+
+                        </span>
+                    </div>
+                </div>
+                <div class="message-side-bar-contener">
+                    <div class="card-message message-active" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div class="card-message" onclick="openMessage(this)">
+                        <div class="avt">
+                            <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                        </div>
+                        <div class="title-message">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                        </div>
+                    </div>
+                    <div style="color: #65676b; text-align: center">
+                        No more message
+                    </div>
+                </div>
+            </div>
+            <div class="message-panel">
+                <div class="chat-contener">
+                    <nav>
+                        <div class="p1">
+                            <span>
+                                <nav>
+                                    <img style="width: 50px"
+                                        src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                                    <div>User 1</div>
+                                </nav>
+                            </span>
+                            <span>
+                                <div class="message">abc</div>
+                            </span>
+                        </div>
+                    </nav>
+                    <nav>
+                        <div class="p2">
+                            <span>
+                                <nav>
+                                    <img style="width: 50px"
+                                        src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                                    <div>User 1</div>
+                                </nav>
+                            </span>
+                            <span>
+                                <div class="message">abc</div>
+                            </span>
+                        </div>
+                    </nav>
+                    <nav>
+                        <div class="p2">
+                            <span>
+                                <nav>
+                                    <img style="width: 50px"
+                                        src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                                    <div>User 1</div>
+                                </nav>
+                            </span>
+                            <span>
+                                <div class="message">abc</div>
+                            </span>
+                        </div>
+                    </nav>
+                    <nav>
+                        <div class="p1">
+                            <span>
+                                <nav>
+                                    <img style="width: 50px"
+                                        src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                                    <div>User 1</div>
+                                </nav>
+                            </span>
+                            <span>
+                                <div class="message">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Voluptatem iure molestias eveniet cumque laudantium autem
+                                    enim rerum ex rem odio ab, deserunt, facilis mollitia
+                                    repellat dolores totam asperiores fugit nulla. Lorem ipsum
+                                    dolor sit amet consectetur adipisicing elit. Voluptatem iure
+                                    molestias eveniet cumque laudantium autem enim rerum ex rem
+                                    odio ab, deserunt, facilis mollitia repellat dolores totam
+                                    asperiores fugit nulla. Lorem ipsum dolor sit amet
+                                    consectetur adipisicing elit. Voluptatem iure molestias
+                                    eveniet cumque laudantium autem enim rerum ex rem odio ab,
+                                    deserunt, facilis mollitia repellat dolores totam asperiores
+                                    fugit nulla.
+                                </div>
+                            </span>
+                        </div>
+                    </nav>
+                    <nav>
+                        <div class="p1">
+                            <span>
+                                <nav>
+                                    <img style="width: 50px"
+                                        src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                                    <div>User 1</div>
+                                </nav>
+                            </span>
+                            <span>
+                                <div class="message">
+                                    this is short content
+                                </div>
+                            </span>
+                        </div>
+                    </nav>
+                    <div class="hook"></div>
+                </div>
+                <div class="second">
+                    <form id="from_a" action="#" onsubmit="return sendMessage(this)">
+                        <div id="div_from">
+                            <textarea class="mess" name="" id="chat-message" cols="150" rows="auto" required></textarea>
+                            <input class="sub_mess" type="submit" value="Send" />
+                        </div>
+                        <div id="div_dot">
+                            <div class="dropup">
+                                <button class="dropbtn"><i class="fa fa-bars"></i></button>
+                                <div class="dropup-content">
+                                    <div class="div_file">
+                                        <label class="lab_file" for="img">Up Load Image</label>
+                                        <input class="file_upload" type="file" id="img" name="img" accept="image/*" />
+                                    </div>
+                                    <div class="div_file">
+                                        <label class="lab_file" for="audio">Up Load Audio</label>
+                                        <input class="file_upload" type="file" id="audio" name="audio" accept="audio/*" />
+                                    </div>
+                                    <div class="div_file">
+                                        <label class="lab_file" for="video">Up Load Video</label>
+                                        <input class="file_upload" type="file" id="video" name="video" accept="video/*" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function message(params) {
+            return '<nav> <div class="p2"> <span> <nav> <img style="width: 50px" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> <div>User 1</div> </nav> </span> <span> <div class="message">' + e + '</div> </span> </div> </nav>'
+        }
+
+        function openMessage(e) {
+            $("div.card-message.message-active").toggleClass("message-active");
+            $(e).toggleClass("message-active");
+        }
+
+        function isBlank(str) {
+            return (!str || /^\s*$/.test(str));
+        }
+
+        function sendMessage(e) {
+            var message = $("#chat-message").val();
+            if (!isBlank(message))
+                $("div.hook").before('<nav> <div class="p2"> <span> <nav> <img style="width: 50px" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> <div>User 1</div> </nav> </span> <span> <div class="message">' + message + '</div> </span> </div> </nav>');
+            $("#chat-message").val('');
+            return false;
+        }
+        $(document).ready(function() {
+
+        });
+        $(".btn-upload").click(function() {
+            $(".upload").show();
+        });
+        
+    </script>
+</body>
+
+</html>

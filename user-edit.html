@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        .edit_all {
+            width: 100%;
+            height: auto;
+            border: 1px solid black;
+            min-width: fit-content;
+        }
+        
+        .edit_all .edit_first {
+            margin: auto;
+            margin-bottom: 50px;
+            margin-top: 50px;
+            width: 500px;
+            height: auto;
+            border: 1px solid black;
+            background-color: white;
+        }
+        
+        #edit_img {
+            width: 100%;
+            height: 100px;
+        }
+        
+        #edit_first_one {
+            width: 500px;
+            height: 100px;
+            display: flex;
+            border-style: none none solid none;
+            border-width: 1px;
+        }
+        
+        #edit_second {
+            width: 500px;
+            height: auto;
+            border: 1px solid black;
+        }
+        
+        #edit_one {
+            width: 20%;
+        }
+        
+        #edit_two {
+            width: 80%;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        
+        .edit_second {
+            text-align: center;
+            color: black;
+        }
+        
+        .edit_in {
+            font-size: large;
+            width: 200px;
+            height: 50px;
+            margin: 20px 5px 5px 5px;
+            text-align: center;
+            color: black;
+        }
+        
+        .edit_in[type=email],
+        .edit_in[type=date],
+        .edit_in[type=address] {
+            text-align: center;
+            width: 420px;
+            height: 50px;
+        }
+        
+        .edit_in[type=submit] {
+            margin-left: 45%;
+            margin-bottom: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="edit_all">
+        <div class="edit_first">
+            <div id="edit_first_one">
+                <div id="edit_one">
+                    <img id="edit_img" src="https://pdp.edu.vn/wp-content/uploads/2021/06/hinh-anh-hoat-hinh-de-thuong-1.jpg" alt="">
+                </div>
+                <div id="edit_two">
+                    <h1>Edit Profile</h1>
+                </div>
+            </div>
+            <form class="edit_second">
+                <input class="edit_in" type="email" name="email" placeholder="Email"> <br>
+                <input class="edit_in" type="text" name="fname" placeholder="First Name">
+                <input class="edit_in" type="text" name="lname" placeholder="Last Name"> <br>
+                <input class="edit_in" type="date" name="dob"><br>
+                <input class="edit_in" type="address" name="address" placeholder="Address"><br>
+                <input class="edit_in" type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

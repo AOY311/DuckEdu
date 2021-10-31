@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: #1abc9c;
+            overflow: hidden;
+        }
+        
+         ::selection {
+            background: rgba(26, 188, 156, 0.3);
+        }
+        
+        .container {
+            max-width: 440px;
+            padding: 0 20px;
+            margin: 62px auto;
+        }
+        
+        .wrapper {
+            width: 100%;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .wrapper .title {
+            height: 90px;
+            background: #16a085;
+            border-radius: 5px 5px 0 0;
+            color: #fff;
+            font-size: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wrapper form {
+            padding: 30px 25px 25px 25px;
+            height: 550px;
+        }
+        
+        .wrapper form .row {
+            height: 45px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .wrapper form .row input {
+            height: 90%;
+            width: 100%;
+            outline: none;
+            padding-left: 60px;
+            border-radius: 5px;
+            border: 1px solid lightgrey;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        form .row input:focus {
+            border-color: #16a085;
+            box-shadow: inset 0px 0px 2px 2px rgba(26, 188, 156, 0.25);
+        }
+        
+        form .row input::placeholder {
+            color: #999;
+        }
+        
+        .wrapper form .row i {
+            position: absolute;
+            width: 47px;
+            height: 100%;
+            color: #fff;
+            font-size: 18px;
+            background: #16a085;
+            border: 1px solid #16a085;
+            border-radius: 5px 0 0 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wrapper form .pass {
+            margin: -8px 0 20px 0;
+        }
+        
+        .wrapper form .pass a {
+            color: #16a085;
+            font-size: 17px;
+            text-decoration: none;
+        }
+        
+        .wrapper form .pass a:hover {
+            text-decoration: underline;
+        }
+        
+        .wrapper form .button input {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 500;
+            padding-left: 0px;
+            background: #16a085;
+            border: 1px solid #16a085;
+            cursor: pointer;
+        }
+        
+        .show-pass {
+            margin-top: 340px;
+            color: #16a085;
+        }
+        
+        .button {
+            margin-top: 10px;
+        }
+        
+        form .button input:hover {
+            background: #12876f;
+        }
+        
+        .wrapper form .signup-link {
+            text-align: center;
+            font-size: 17px;
+            float: right;
+            margin-bottom: 10px;
+        }
+        
+        .wrapper form .signup-link a {
+            color: #16a085;
+            text-decoration: none;
+        }
+        
+        form .signup-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .error {
+            font-size: 12px;
+            color: red;
+            margin-left: 20px;
+        }
+        
+        .error {
+            display: none;
+        }
+        
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 350px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black  opacity */
+        }
+        /* Modal Content */
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 0px;
+            right: 12px;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .box {
+            height: 41px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <body onload="checkAllData(${show})">
+        <div class="container">
+            <div class="wrapper">
+                <div class="title"><span>Sign Up</span></div>
+                <form>
+                    <div class="row">
+                        <div class="box">
+                            <input class="inline row" type="text" name="firstname" id="firstname" placeholder="First Name" required>
+                            <span class="error" id="errFirstname">First Name must be characters. </span>
+                        </div>
+
+                        <input class="inline row" type="text" name="lastname" id="lastname" placeholder="Last Name" required>
+                        <span class="error" id="errLastname">Last Name must be characters. </span>
+
+                        <input class="inline row" type="text" name="username" id="username" placeholder="Username" required>
+                        <span class="error" id="errUsername">Username must be from 6 to 30 characters and no start number.</span>
+
+                        <input class="inline row" type="text" name="gmail" id="gmail" placeholder="Gmail" required>
+                        <span class="error" id="errEmail">Email don't valid</span>
+
+                        <input class="inline row" type="date" name="date" id="date" placeholder="Date of Birth" required>
+                        <span class="error" id="errDob">Date of Birth must be less than current day</span>
+
+                        <input class="inline row" type="password" placeholder="Password" required>
+                        <span class="error" id="errPassword">Password must be from 6 to 30 characters.</span>
+
+                        <input class="inline row" type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
+                        <span class="error" id="errConfpass">Password doesn't match.</span>
+
+                    </div>
+                    <div class="show-pass">
+                        Show Password
+                        <input type="checkbox" name="check-Showpass" id="check-Showpass">
+
+                    </div>
+                    <div class="row button">
+                        <input id="myBtn" type="submit" value="Register">
+                    </div>
+                    <div class="signup-link">
+                        <a href="${pageContext.request.contextPath}/control?button-control=login">login instead</a>
+                        <a href="#">Help</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Modal error -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" onclick="hide()">&times;</span>
+                <p>Username was exits.</p>
+            </div>
+        </div>
+    </body>
+    <script>
+        /* 
+         * To change this license header, choose License Headers in Project Properties.
+         * To change this template file, choose Tools | Templates
+         * and open the template in the editor.
+         */
+
+
+        var rgGmail = /^[a-zA-Z]{1,}(\w){0,}@\w{2,}(\.[a-z]{2,}){1,}$/;
+        var rgUsername = /^[a-zA-Z]{1,}[a-zA-Z0-9]{4,}$/;
+        var rgPassword = /^[a-zA-Z0-9][a-zA-Z0-9.,!@#$%^&*()_+]{5,}$/;
+        var rgName = /^[a-zA-Z\s]{3,}$/;
+
+        $(document).ready(function() {
+            $("#firstname").focusout(function() {
+                if (validfirstname()) {
+                    $("#firstname").css("border", "2px solid green");
+                    $("#errFirstname").hide();
+
+                } else {
+                    $("#errFirstname").show();
+                }
+            });
+
+            $("#lastname").focusout(function() {
+                if (validlastname()) {
+                    $("#lastname").css("border", "2px solid green");
+                    $("#errLastname").hide();
+
+                } else {
+                    $("#errLastname").show();
+                }
+            });
+
+            $("#username").focusout(function() {
+                if (validusername()) {
+                    $("#username").css("border", "2px solid green");
+                    $("#errUsername").hide();
+
+                } else {
+                    $("#errUsername").show();
+                }
+            });
+
+            $("#password").focusout(function() {
+                if (validPassword()) {
+                    $("#password").css("border", "2px solid green");
+                    $("#errPassword").hide();
+
+                } else {
+                    $("#errPassword").show();
+                }
+            });
+
+            $("#confirm-password").focusout(function() {
+                if (validconfpass()) {
+                    $("#confirm-password").css("border", "2px solid green");
+                    $("#errConfpass").hide();
+
+                } else {
+                    $("#errConfpass").show();
+                }
+            });
+
+            $("#gmail").focusout(function() {
+                if (validemail()) {
+                    $("#gmail").css("border", "2px solid green");
+                    $("#errEmail").hide();
+
+                } else {
+                    $("#errEmail").show();
+                }
+            });
+
+        });
+
+
+        function validfirstname() {
+            var firstname = $("#firstname").val();
+            if (rgName.test(firstname)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function validlastname() {
+            var lastname = $("#lastname").val();
+            if (rgName.test(lastname)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function validusername() {
+            var username = $("#username").val();
+            if (rgUsername.test(username)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function validPassword() {
+            var password = $("#password").val();
+            if (rgPassword.test(password)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function validconfpass() {
+            var password = $("#password").val();
+            var confirm_password = $("#confirm-password").val();
+            if (confirm_password == password) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function validemail() {
+            var gmail = $("#gmail").val();
+            if (rgGmail.test(gmail)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function checkAllData(show) {
+            if (show) {
+                if (validfirstname() && validlastname() && validusername() && validPassword() &&
+                    validconfpass() && validemail()) {
+                    $("#myModal").hide();
+                    return false;
+                } else {
+                    $("#myModal").show();
+                    return false;
+                }
+            }
+        }
+
+        function hide() {
+            var span = document.getElementsByClassName("close")[0];
+            var modal = document.getElementById("myModal");
+
+            modal.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

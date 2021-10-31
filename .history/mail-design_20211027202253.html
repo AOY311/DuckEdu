@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,500;1,500&display=swap');
+        .contener {
+            display: flex;
+            justify-content: center;
+        }
+        
+        main {
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+            max-width: 750px;
+            width: 750px;
+            border-radius: .5rem;
+        }
+        
+        .logo {
+            width: 80px;
+        }
+        
+        .mail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .mail:first-child span p {
+            font-weight: 600;
+            font-size: 2.5vw;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-left: 25px;
+        }
+        
+        .mail:first-child::after {
+            content: "";
+            margin-top: 20px;
+            margin-bottom: 50px;
+            width: 100%;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+        }
+        
+        .code--renew {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contener">
+        <main>
+            <div class="mail">
+                <thead>
+                    <span>
+                        <div class="logo">
+                            <img src="img/logo.svg" alt="Duck Logo">
+                        </div>
+                    </span>
+                    <span>
+                        <P>DUCK EDUCATION</P>
+                    </span>
+                </thead>
+                <thead>
+                    <i>this is a mail send form DuckEducation to with code to renew your password: this code have 4-degit.</i>
+                </thead>
+            </div>
+            <div class="code--renew">
+                <code>5543</code>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/toolbar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .header {
+            height: 101px;
+        }
+        
+        .header-contener {
+            position: fixed;
+            z-index: 10;
+            top: 0px;
+            width: 100%;
+            padding: 10px 20px;
+            background: white;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+        }
+        
+        .contener {
+            height: 100%;
+            display: flex;
+            box-sizing: border-box;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            min-width: auto;
+            margin: 0 auto;
+            padding-right: 20px;
+            padding-left: 20px;
+            max-width: 1240px;
+        }
+        
+        #logo_home {
+            width: 50px;
+            left: 39px;
+            top: 8px;
+            margin-right: 5px;
+        }
+        
+        .icon {
+            width: 30px;
+            height: 30px;
+        }
+        
+        #searchIcon>img {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left: 375px;
+            top: 20px;
+        }
+        
+        #searchInput {
+            box-sizing: content-box;
+            height: 40px;
+            width: 325px;
+            padding: 0 46px 0 10px;
+            border-color: #888;
+            border-radius: 35px;
+            border-style: solid;
+            border-width: 2px;
+            margin-top: 15px;
+            color: #333;
+            font-size: 20px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        
+        #searchInput:focus {
+            border: 0px;
+        }
+        
+        .search {
+            display: inline-block;
+            align-items: center;
+            position: relative;
+        }
+        
+        .btn-search {
+            background-color: transparent;
+            border: none;
+            color: none;
+            cursor: pointer;
+        }
+        
+        .button-38 {
+            background-color: #FFFFFF;
+            border: 0;
+            border-radius: .5rem;
+            box-sizing: border-box;
+            color: #111827;
+            font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: .875rem;
+            font-weight: 600;
+            line-height: 1.25rem;
+            padding: .75rem 1rem;
+            text-align: center;
+            text-decoration: none #D1D5DB solid;
+            text-decoration-thickness: auto;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+        
+        .button-38:hover {
+            background-color: rgb(249, 250, 251);
+        }
+        
+        .button-38:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        
+        .button-38:focus-visible {
+            box-shadow: none;
+        }
+        
+        .side-right span:not(:first-child) {
+            margin-left: 10px;
+        }
+        
+        ul .drop {
+            background: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        
+        .header_ul>ul li {
+            padding: 0 10px;
+        }
+        
+        .header_ul li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header_ul>li {
+            list-style: none;
+            float: left;
+            width: 150px;
+            height: 65px;
+            line-height: 65px;
+            position: relative;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+        }
+        
+        .setting a {
+            cursor: pointer;
+        }
+        
+        ul.drop {
+            position: absolute;
+            top: 100%;
+            left: 0%;
+            width: 100%;
+            padding: 0;
+            border-radius: 0px;
+        }
+        
+        ul.drop li {
+            display: none;
+            text-align: left;
+            width: 150px;
+            margin: 0px;
+            background: white;
+            border-radius: 0px;
+            align-items: center;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+        
+        ul.drop li:hover {
+            background: rgb(235, 234, 234);
+        }
+        
+        .setting {
+            background: rgb(80, 150, 255) !important;
+            border-radius: 0px;
+        }
+        
+        ul.drop {
+            border-radius: 0px 0px 5px 5px;
+            overflow: hidden;
+        }
+        
+        li:hover {
+            background: rgba(218, 216, 216, 0.3);
+            border-radius: 5px 5px 0 0;
+        }
+        
+        li:hover>ul.drop li {
+            display: block;
+            z-index: 10;
+        }
+        
+        ul.setting li {
+            background: rgb(109, 189, 255);
+            display: none;
+        }
+        
+        ul.drop.setting li:hover {
+            background: rgb(86, 154, 255);
+            color: white;
+        }
+        
+        @media only screen and (max-width: 500px) {
+            .option {
+                float: left;
+            }
+        }
+        
+        #DuckEdu {
+            display: none;
+        }
+        
+        .side-left span:hover>#DuckEdu {
+            display: inline-block;
+            -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        }
+        
+        .tracking-in-expand {
+            -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        }
+        
+        .list-result-search {
+            display: none;
+            position: absolute;
+            width: 100%;
+            flex-direction: column;
+            background: transparent;
+            /* display: flex; */
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .result-search {
+            width: 75%;
+            height: 50px;
+            background: white;
+            padding: 5px;
+            border: 1px solid;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+        
+        .result-search:hover {
+            background: #D1D5DB;
+        }
+        
+        .result-search data {
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+        /* ----------------------------------------------
+ * Generated by Animista on 2021-10-16 23:8:53
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+        /**
+ * ----------------------------------------
+ * animation tracking-in-expand
+ * ----------------------------------------
+ */
+        
+        @-webkit-keyframes tracking-in-expand {
+            0% {
+                letter-spacing: -0.5em;
+                opacity: 0;
+            }
+            40% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes tracking-in-expand {
+            0% {
+                letter-spacing: -0.5em;
+                opacity: 0;
+            }
+            40% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        #all_learning_site {
+            width: 100%;
+            height: auto;
+        }
+        
+        #first_learning_site {
+            width: 100%;
+            height: 120px;
+            border: 1px solid black;
+            display: flex;
+        }
+        
+        #second_learning_site {
+            width: 100%;
+            height: 605px;
+            display: flex;
+            border-style: none solid solid;
+            border-width: 1px;
+        }
+        
+        #one {
+            width: 20%;
+            height: 120px;
+        }
+        
+        #two {
+            width: 80%;
+            height: 120px;
+            text-align: center;
+        }
+        
+        #one_img {
+            width: 50%;
+            height: 120px;
+            margin-left: 25%;
+            margin-right: 25%;
+        }
+        
+        .one_one {
+            width: 100%;
+            height: 45%;
+            text-align: center;
+        }
+        
+        .two_two {
+            width: 100%;
+            height: 45%;
+        }
+        
+        #name_cour {
+            width: 70%;
+            height: 100%;
+            border: 1px solid black;
+            margin-top: 8px;
+            margin-left: 15%;
+            font-size: 40px;
+        }
+        
+        .button {
+            width: 200px;
+            height: auto;
+            font-size: 30px;
+            float: right;
+            margin-right: 50px;
+            margin-top: 10px;
+        }
+        /*********************************************/
+        
+        #sc_one {
+            width: 20%;
+            height: auto;
+        }
+        
+        #sc_two {
+            width: 80%;
+            height: 605px;
+            overflow: auto;
+            border-style: none none none solid;
+            border-width: 1px;
+            border-color: black;
+        }
+        
+        #nav_cour {
+            width: 100%;
+            height: 605px;
+            overflow: auto;
+        }
+        
+        #f_div_cour {
+            width: 100%;
+            height: auto;
+        }
+        
+        #ct {
+            width: 95%;
+            height: auto;
+            margin-left: 2%;
+            margin-right: 2%;
+            overflow-x: auto;
+        }
+        
+        #ul_1 {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .li_2 {
+            width: 100%;
+            height: auto;
+            background-color: white;
+            font-size: 25px;
+        }
+        
+        .li_2 a {
+            color: black;
+            text-decoration: none;
+            width: 100%;
+            height: auto;
+            margin-left: 10px;
+            text-align: center;
+        }
+        
+        .li_1,
+        .li_3,
+        .li_4,
+        .li_5 {
+            font-size: 30px;
+            border-style: none none solid;
+            border-width: 1px;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+        
+        .ul_2,
+        .ul_3,
+        .ul_4,
+        .ul_5 {
+            display: none;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 100%;
+        }
+        
+        .display {
+            display: block;
+        }
+        
+        .li_1:hover,
+        .li_3:hover,
+        .li_4:hover,
+        .li_5:hover {
+            cursor: pointer;
+            border-style: none none none solid;
+            border-width: 10px;
+            border-color: blue;
+        }
+        
+        .li_2 a:hover {
+            cursor: pointer;
+            border-style: none none none solid;
+            border-width: 10px;
+            border-color: rgb(4, 148, 16);
+        }
+        
+        body {
+            scrollbar-gutter: stable both-edges;
+        }
+        
+        .vertical-menu {
+            max-width: 304px;
+        }
+        
+        .vertical-menu a {
+            border-style: groove;
+            font-size: 25px;
+            text-align: center;
+            background-color: #eee;
+            color: black;
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+        }
+        
+        .vertical-menu a:hover {
+            background-color: #ccc;
+        }
+        
+        .vertical-menu #title {
+            background-color: #04AA6D;
+            color: white;
+        }
+        
+        #button_add_mooc {
+            border: groove;
+            text-align: center;
+            font-size: 25px;
+            background-color: #eee;
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+            width: 100%;
+        }
+        
+        #button_add_mooc button:hover {
+            background-color: #ccc;
+        }
+        /*     */
+        
+        .panel-lession {
+            font-family: sans-serif;
+        }
+        
+        .course-name {
+            color: #1abc9c;
+        }
+        
+        .lession-content,
+        .test-content {
+            border: 1px solid #000;
+            padding: 10px 20px;
+            text-align: justify;
+            display: none;
+        }
+        
+        #lession-content-1 {
+            display: block;
+        }
+        
+        .lession,
+        .test-content {
+            padding-left: 20px;
+            color: #1abc9c;
+        }
+        
+        .text-content {
+            color: thistle;
+            text-align: center;
+        }
+        
+        .lession-page {
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: fit-content;
+        }
+        
+        .lession-title {
+            margin-right: 5px;
+        }
+        
+        .lession-no,
+        .plus {
+            border: 1px solid #000;
+            padding: 5px;
+            border-radius: 6px;
+            width: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        
+        .lession-no:hover,
+        .plus:hover,
+        .test-no:hover {
+            background-color: #1abc9c;
+            color: #fff;
+        }
+        
+        .plus {
+            position: relative;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        .choose-plus {
+            border: 1px solid #000;
+            padding: 8px;
+            width: 100px;
+            box-shadow: 1px 2px 2px #777;
+            list-style-type: none;
+            position: absolute;
+            top: -110px;
+            right: 0;
+            display: none;
+            background-color: #fff;
+        }
+        
+        .choose-content {
+            display: block;
+            text-align: center;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .choose-content:hover {
+            color: turquoise;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .test-no {
+            border: 1px solid #000;
+            padding: 6px;
+            border-radius: 6px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        
+        #new-lession {
+            display: flex;
+        }
+        
+        #lession-content-3 {
+            display: none;
+        }
+        
+        #lession-content-2 {
+            display: none;
+        }
+        
+        .panel-lession {
+            display: none;
+        }
+        
+        #mooc_1 {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="header-contener">
+            <div class="contener">
+                <div class="side-left">
+                    <span>
+                        <a href="home.jsp" class="logo"><img id="logo_home" src="img/logo.svg" alt="logo"></a>
+                         <div id="DuckEdu">
+                             DUCK EDU
+                         </div>
+                    </span>
+                    <span>
+                        <div class="search">
+                            <form action="#" method="GET">
+                                <button class="icon btn-search " id="searchIcon" type="submit"><img src="./img/search.png" alt=""></button>
+                                <input type="text" id="searchInput" placeholder="Search">
+                            </form>
+                            <div class="list-result-search">
+                                <div class="result-search" id="a1" role="button" ><data>abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc</data></div>
+                                <div class="result-search" id="a2" role="button" >abc</div>
+                                <div class="result-search" id="a3" role="button" >abc</div>
+                                <div class="result-search" id="a4" role="button" >abc</div>
+                                <div class="result-search" id="a5" role="button" >abc</div>
+                                <div class="result-search" id="a6" role="button" >abc</div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="side-right">
+                    <div class="option">
+                        <nav>
+                            <ul class="header_ul">
+                                <li><img class="icon" src="img/message.png" alt="">
+                                    <ul class="drop">
+                                        <a href="message.html">
+                                            <li>
+                                                <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                            </li>
+                                        </a>
+                                        <a href="message.html">
+                                            <li>
+                                                <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                            </li>
+                                        </a>
+
+                                    </ul>
+                                </li>
+                                <li><img class="icon" src="img/bell.png" alt="">
+                                    <ul class="drop">
+                                        <li>
+                                            <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><img class="icon" src="img/setting.png" alt="">
+                                    <ul class="drop setting">
+                                        <a style="width: 100%;" href="user.jsp">
+                                            <li>
+                                                <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> User
+                                            </li>
+                                        </a>
+                                        <a style="width: 100%;" href="setting.jsp">
+                                            <li>
+                                                Setting page
+                                            </li>
+                                        </a>
+                                        <li>
+                                            Logout
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="all_learning_site">
+        <div id="second_learning_site">
+
+            <div id="sc_one">
+                <nav id="nav_cour">
+                    <div id="f_div_cour">
+                        <!-- mooc bar -->
+                        <div class="vertical-menu">
+                            <a id="title">Courses</a>
+                            <a id="1" onclick="showLessonPanel(this.id)">MOOC 1</a>
+                            <a id="2" onclick="showLessonPanel(this.id)">MOOC 2</a>
+                            <div id="container-mooc"></div>
+                            <button id="button_add_mooc" onclick="addMooc()">+</button>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+            <div id="sc_two">
+                <!-- <div class="lesson-panel" id="mooc_1">
+                    MOOC1
+                </div>
+                <div class="lesson-panel" id="mooc_2">
+                    MOOC2
+                </div>
+                     -->
+
+                <div class="panel-lession" id="mooc_1">
+                    <h2 class="course-name">Course Name</h2>
+
+                    <div id="main-lession">
+                        <div class="lession-content" id="lession-content-1">
+                            <h3 class="lession" id="lession-1">MOOC 1 Lession 1</h3>
+                            <div class="text-content" id="content-1">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus quos soluta officiis omnis optio voluptatem expedita sapiente est? Tempore facilis eligendi aut velit in aliquam ullam culpa similique architecto? Sunt. Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Accusamus quos soluta officiis omnis optio voluptatem expedita sapiente est? Tempore facilis eligendi aut velit in aliquam ullam culpa similique architecto? Sunt.
+                            </div>
+                        </div>
+                        <div class="lession-content" id="lession-content-2">
+                            <h3 class="lession" id="lession-2">Lession 2</h3>
+                            <div class="text-content" id="content-2">CONTENT HERE 2</div>
+                        </div>
+                        <div class="lession-content" id="lession-content-3">
+                            <h3 class="lession" id="lession-3">Lession 3</h3>
+                            <div class="text-content" id="content-3">CONTENT HERE 3</div>
+                        </div>
+                    </div>
+                    <div id="main-test" class="main-test">
+                        <h3 class="test-content" id="test-1">CONTENT TEST 1</h3>
+                    </div>
+
+                    <div class="lession-page">
+                        <span class="lession-title">Lession</span>
+                        <span class="lession-no" id="1" onclick="showcontent(this.id)">1</span>
+                        <span class="lession-no" id="2" onclick="showcontent(this.id)">2</span>
+                        <span class="lession-no" id="3" onclick="showcontent(this.id)">3</span>
+                        <span class="test-no" id="1" onclick="showTest(this.id)">Test</span>
+                        <span id="new-lession"></span>
+                        <div class="plus">
+                            <span id="plus-lession">+</span>
+                        </div>
+                        <ul class="choose-plus" id="box-plus">
+                            <li class="choose-content" onclick="addTest('#mooc_1')">Test</li>
+                            <li class="choose-content" onclick="addLession('#mooc_1')">Lession</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-lession" id="mooc_2">
+                    <h2 class="course-name">Course Name</h2>
+
+                    <div id="main-lession">
+                        <div class="lession-content" id="lession-content-1">
+                            <h3 class="lession" id="lession-1">MOOC2 Lession 1</h3>
+                            <div class="text-content" id="content-1">CONTENT HERE 1CONTENT HERE 1</div>
+                        </div>
+                        <div class="lession-content" id="lession-content-2">
+                            <h3 class="lession" id="lession-2">Lession 2</h3>
+                            <div class="text-content" id="content-2">CONTENT HERE 2</div>
+                        </div>
+                        <div class="lession-content" id="lession-content-3">
+                            <h3 class="lession" id="lession-3">Lession 3</h3>
+                            <div class="text-content" id="content-3">CONTENT HERE 3</div>
+                        </div>
+                    </div>
+                    <div id="main-test" class="main-test">
+                        <h3 class="test-content" id="test-1">CONTENT TEST 1</h3>
+                    </div>
+
+                    <div class="lession-page">
+                        <span class="lession-title">Lession</span>
+                        <span class="lession-no" id="1" onclick="showcontent(this.id)">1</span>
+                        <span class="lession-no" id="2" onclick="showcontent(this.id)">2</span>
+                        <span class="lession-no" id="3" onclick="showcontent(this.id)">3</span>
+                        <span class="test-no" id="1" onclick="showTest(this.id)">Test</span>
+                        <span id="new-lession"></span>
+                        <div class="plus">
+                            <span id="plus-lession">+</span>
+                        </div>
+                        <ul class="choose-plus" id="box-plus">
+                            <li class="choose-content" onclick="addTest('#mooc_2')">Test</li>
+                            <li class="choose-content" onclick="addLession('#mooc_2')">Lession</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="container-lesson"></div>
+
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    <script>
+        var count = 2;
+
+        function addMooc() {
+            count++;
+            jQuery("#container-mooc").append(
+                ' <a id =' + count + ' onclick="showLessonPanel(this.id)">MOOC' + count + '</a>'
+            )
+            jQuery("#container-lesson").append(
+                ' <div class="panel-lession" id="mooc_' + count + '">MOOC' + count + '</div>'
+            )
+        }
+
+        var idPanelLessonBefore = "1"; //load trang, auto show mooc1    
+        function showLessonPanel(id) {
+            if (idPanelLessonBefore != null) {
+                var LessonPanelBefore = document.getElementById("mooc_" + idPanelLessonBefore);
+                LessonPanelBefore.style.display = "none"; //hinden panel trc do
+            }
+            idPanelLessonBefore = id; //luu id cua panel dang mo
+            var LessonPanel = document.getElementById("mooc_" + id); //mapping id cua button va id cua panel can show
+            LessonPanel.style.display = "block"; //show panel 
+        }
+
+        var idPageDefault = "1";
+        var defaulTestID = "1";
+
+        function addLession(parent_id) {
+            var no = document.querySelectorAll(parent_id + " .lession-no").length;
+            var newno = no + 1;
+            jQuery(parent_id + " #new-lession").append(
+                '<span class="lession-no" id="' +
+                newno +
+                '" onclick="showcontent(this.id)">' +
+                newno +
+                "</span>"
+            );
+            jQuery(parent_id + " #main-lession").append(
+                '<div class="lession-content" id="lession-content-' +
+                newno +
+                '"><h3 class="lession" id="lession-' +
+                newno +
+                '">Lession ' +
+                newno +
+                '</h3><div class="text-content" id="content-' +
+                newno +
+                '">CONTENT HERE ' +
+                newno +
+                "</div></div>"
+            );
+        }
+
+        var countTest = 1;
+
+        function addTest(parent_id) {
+            countTest++;
+            jQuery(parent_id + " #new-lession").append(
+                '<span class="test-no" id="' +
+                countTest +
+                '" onclick="showTest(this.id)">Test</span>'
+            );
+            jQuery(parent_id + " #main-test").append(
+                '<h3 class="test-content" id="test-' +
+                countTest +
+                '">CONTENT TEST ' +
+                countTest +
+                "</h3>"
+            );
+        }
+
+        function showcontent(id) {
+            console.log(id);
+            if (idPageDefault != null) {
+                var pageBefore = document.getElementById(
+                    "lession-content-" + idPageDefault
+                );
+                pageBefore.style.display = "none";
+                var testBefore = document.getElementById("test-" + defaulTestID);
+                testBefore.style.display = "none";
+            }
+
+            idPageDefault = id;
+            var choicePage = document.getElementById("lession-content-" + id);
+            choicePage.style.display = "block";
+        }
+
+        function showTest(id) {
+            if (defaulTestID != null) {
+                var testBefore = document.getElementById("test-" + defaulTestID);
+                testBefore.style.display = "none";
+                var pageBefore = document.getElementById(
+                    "lession-content-" + idPageDefault
+                );
+                pageBefore.style.display = "none";
+            }
+
+            defaulTestID = id;
+            var choiceTest = document.getElementById("test-" + id);
+            choiceTest.style.display = "block";
+        }
+
+        $(".plus").click(function() {
+            $(".choose-plus").toggleClass("show");
+        });
+
+        // function mainPage() {
+        //     var currentPage = document.getElementById("page1").innerHTML;
+        //     $(".lession-content").hide();
+        //     jQuery("#main-lession").append(
+        //         '<div class="lession-content"><h3 class="lession-name" id="changeTitle">Lession ' +
+        //         currentPage +
+        //         '</h3><div class="text-content">CONTENT HERE ' +
+        //         currentPage +
+        //         "</div></div>"
+        //     );
+        // }
+
+        // function changePage() {
+        //     var currentPage = document.getElementById("page2").innerHTML;
+        //     $(".lession-content").hide();
+        //     jQuery("#main-lession").append(
+        //         '<div class="lession-content"><h3 class="lession-name" id="changeTitle">Lession ' +
+        //         currentPage +
+        //         '</h3><div class="text-content">CONTENT HERE ' +
+        //         currentPage +
+        //         "</div></div>"
+        //     );
+        // }
+
+        // function addLession(element) {
+
+        //     var no = document.querySelectorAll(element+" .lession-no").length;
+        //     var newno = no + 1;
+        //     jQuery(element+" #new-lession").append(
+        //         '<span class="lession-no">' + newno + "</span>"
+        //     );
+        // }
+
+        // function addTest(element) {
+        //     jQuery(element+" #new-lession").append('<span class="test-no">Test</span>');
+        // }
+
+        // $(".plus").click(function () {
+        //     $(".choose-plus").toggleClass("show");
+        // });
+    </script>
+</body>
+
+
+</html>

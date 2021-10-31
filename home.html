@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/toolbar.css">
     <link rel="stylesheet" href="CSS/footer.css">
     <link rel="stylesheet" href="CSS/courses.css">
     <link rel="stylesheet" href="CSS/panel.css">
+    <link rel="stylesheet" href="CSS/course-Discription.css">
 
     <title>Document</title>
     <style>
@@ -18,15 +22,18 @@
             height: 100%;
             margin: 0px;
             padding: 0px;
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-clip: black;
         }
         
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        .hcenter h2 {
             font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            color: white;
+            text-decoration: underline;
+            text-decoration-color: orange;
         }
         
         .hcenter {
@@ -39,40 +46,63 @@
             text-decoration: underline;
         }
         
-         ::-webkit-scrollbar {
-            display: none;
+        .modal-dialog {
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .modal-content {
+            max-width: 800px;
         }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <nav class="header-contener">
-            <div class="contener">
-                <div class="side-left">
-                    <span>
-                        <a href="home.jsp" class="logo"><img id="logo_home" src="./img/logo.png" alt="logo"></a>
+    <header>
+        <div class="header">
+            <nav class="header-contener">
+                <div class="contener">
+                    <div class="side-left">
+                        <span>
+                        <a href="home.jsp" class="logo"><img id="logo_home" src="img/logo.svg" alt="logo"></a>
+                         <div id="DuckEdu">
+                             DUCK EDU
+                         </div>
                     </span>
-                    <span>
+                        <span>
                         <div class="search">
                             <form action="#" method="GET">
-                                <button class="icon btn" id="searchIcon" type="submit"><img src="./img/search.png" alt=""></button>
+                                <button class="icon btn-search " id="searchIcon" type="submit"><img src="./img/search.png" alt=""></button>
                                 <input type="text" id="searchInput" placeholder="Search">
                             </form>
+                            <div class="list-result-search">
+                                <div class="result-search" id="a1" role="button" ><data>abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc</data></div>
+                                <div class="result-search" id="a2" role="button" >abc</div>
+                                <div class="result-search" id="a3" role="button" >abc</div>
+                                <div class="result-search" id="a4" role="button" >abc</div>
+                                <div class="result-search" id="a5" role="button" >abc</div>
+                                <div class="result-search" id="a6" role="button" >abc</div>
+                            </div>
                         </div>
                     </span>
-                </div>
-                <div class="side-right">
-                    <span>
-                        <button href="login.page" class="button-38" onclick="window.location.href = 'login-register.html'">Login</button>
+                    </div>
+                    <div class="side-right">
+                        <span>
+                        <button type="button" href="login.page" class="button-38 btn btn-primary btn-lg" onclick="window.location.href = 'login-register.html'">Login</button>
                     </span>
-                    <span>
-                        <button href="" class="button-38" onclick="window.location.href = 'Signup.jsp'">Sign Up</button>
+                        <span>
+                        <button type="button" href="" class="button-38 btn btn-primary btn-lg" onclick="window.location.href = 'register.html'">Sign Up</button>
                     </span>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </div>
+            </nav>
+        </div>
+    </header>
     <div class="home-contenter">
         <div class="hcenter ">
             <nav>
@@ -82,8 +112,8 @@
         <div class="PCourses panel .scrollbar-hidden">
             <nav>
                 <main>
-                    <section class="cards ">
-                        <div class="card ">
+                    <section class="cards">
+                        <div class="card" role="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
                             <div class="card__image-container ">
                                 <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80 " alt="Detailed image description would go here. " />
                             </div>
@@ -101,7 +131,7 @@
                             </div>
                         </div>
 
-                        <div class="card ">
+                        <div class="card" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">
                             <div class="card__image-container ">
                                 <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80 " alt="Detailed image description would go here. " />
                             </div>
@@ -201,7 +231,7 @@
         <div class="course panel .scrollbar-hidden">
             <main>
                 <section class="cards ">
-                    <div class="card ">
+                    <div class="card " onclick="location.href='course-Discription.html'">
                         <div class="card__image-container ">
                             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80 " alt="Detailed image description would go here. " />
                         </div>
@@ -219,7 +249,7 @@
                         </div>
                     </div>
 
-                    <div class="card ">
+                    <div class="card " onclick="location.href='course-Discription.html'">
                         <div class="card__image-container ">
                             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80 " alt="Detailed image description would go here. " />
                         </div>
@@ -237,7 +267,7 @@
                         </div>
                     </div>
 
-                    <div class="card ">
+                    <div class="card " onclick="location.href='course-Discription.html'">
                         <div class="card__image-container ">
                             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80 " alt="Detailed image description would go here. " />
                         </div>
@@ -255,7 +285,7 @@
                         </div>
                     </div>
 
-                    <div class="card ">
+                    <div class="card " onclick="location.href='course-Discription.html'">
                         <div class="card__image-container ">
                             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80 " alt="Detailed image description would go here. " />
                         </div>
@@ -273,7 +303,7 @@
                         </div>
                     </div>
 
-                    <div class="card ">
+                    <div class="card " onclick="location.href='course-Discription.html'">
                         <div class="card__image-container ">
                             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80 " alt="Detailed image description would go here. " />
                         </div>
@@ -291,7 +321,7 @@
                         </div>
                     </div>
 
-                    <div class="card ">
+                    <div class="card " onclick="location.href='course-Discription.html'">
                         <div class="card__image-container ">
                             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80 " alt="Detailed image description would go here. " />
                         </div>
@@ -311,6 +341,108 @@
 
                 </section>
             </main>
+        </div>
+    </div>
+    <!-- Modal1 -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-title">
+                        <h4>Modal Header Modal HeaderModal HeaderModal HeaderModal Header</h4>
+                        <img class="image" src="https://vuongquocanh.com/wp-content/uploads/2018/03/england-wal.jpg">
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="title-description">
+                            <p>Course Description</p>
+
+                            <P class="text-description">
+                                .................................................................................................................................................................................................................
+                            </p>
+                        </div>
+                        <div>
+                            <p class="title-description">Course Objectives</p>
+
+                            <P class="text-description">
+                                .................................................................................................................................................................................................................
+                            </p>
+                        </div>
+                        <div>
+                            <p class="title-description">Course Structure</p>
+
+                            <P class="text-description">
+                                .................................................................................................................................................................................................................
+                            </p>
+                        </div>
+                        <div>
+                            <p class="title-description">Course Requirement</p>
+
+                            <P class="text-description">
+                                .................................................................................................................................................................................................................
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" class="button-enroll" data-dismiss="modal " onclick="window.location.href = 'login-register.html'">Enroll</button>
+                        <button type="button" class=" btn btn-default" class="button-resume" data-dismiss="modal">Resume</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal 2 -->
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-title">
+                        <h4>Modal 22222</h4>
+                        <img class="image" src="https://vuongquocanh.com/wp-content/uploads/2018/03/england-wal.jpg">
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="title-description">
+                            <p>Course Description</p>
+
+                            <P class="text-description">
+                                .................................................................................................................................................................................................................
+                            </p>
+                        </div>
+                        <div>
+                            <p class="title-description">Course Objectives</p>
+
+                            <P class="text-description">
+                                .................................................................................................................................................................................................................
+                            </p>
+                        </div>
+                        <div>
+                            <p class="title-description">Course Structure</p>
+
+                            <P class="text-description">
+                                .................................................................................................................................................................................................................
+                            </p>
+                        </div>
+                        <div>
+                            <p class="title-description">Course Requirement</p>
+
+                            <P class="text-description">
+                                .................................................................................................................................................................................................................
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" class="button-enroll" data-dismiss="modal" onclick="window.location.href = 'login-register.html'">Enroll</button>
+                        <button type="button" class=" btn btn-default" class="button-resume" data-dismiss="modal">Resume</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <footer class="footer ">

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+        }
+        
+        .container__sidebar {
+            width: 30%;
+        }
+        
+        .container__main {
+            /* Take the remaining width */
+            flex: 1;
+            /* Make it scrollable */
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="container__sidebar">
+            <div class="header-message-side-bar">
+                <div class="header-message-side-bar-contener">
+                    <span>
+                        <h2>Message</h2>
+                    </span>
+                    <span>
+                        <button type="button" class="button-38 btn btn-primary btn-lg" >New</button>
+
+                    </span>
+                </div>
+            </div>
+            <div class="message-side-bar-contener">
+                <div class="card-message message-active" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div class="card-message" onclick="openMessage(this)">
+                    <div class="avt">
+                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" />
+                    </div>
+                    <div class="title-message">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error facilis maxime sed! Eos veritatis ut neque voluptatem dicta corrupti, optio, iusto nobis pariatur excepturi nihil distinctio harum impedit dolore!
+                    </div>
+                </div>
+                <div style="color: #65676b; text-align: center">
+                    No more message
+                </div>
+            </div>
+    </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="container__main">
+        ...
+    </main>
+    </div>
+</body>
+
+</html>

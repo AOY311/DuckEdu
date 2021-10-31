@@ -5,16 +5,34 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/login-register.css">
+    <script src="https://kit.fontawesome.com/3ae349ec71.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    </script>
+    <link rel="stylesheet" href="CSS/login-register.css">
+    <link rel="stylesheet" href="CSS/animation.css">
+    <link rel="stylesheet" href="CSS/toolbar.css">
+    <style>
+        body,
+        html {
+            -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+            animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        }
+    </style>
 
 </head>
 
 <body>
+
     <div class="container">
         <div class="wrapper">
-            <div class="title"><span>Login Form</span></div>
+            <div>
+
+            </div>
+            <div class="title"><span>
+                <a href="home.jsp" class="logo"><img id="logo_home" src="img/logo.svg" alt="logo"></a>
+                 <div id="DuckEdu">
+                     DUCK EDU
+                 </div><span>Login Form</span></div>
             <form>
                 <div class="row">
                     <i class="fas fa-user"></i>
@@ -29,7 +47,7 @@
                     <input id="myBtn" type="submit" value="Login">
                     <!-- id="myModal" -> modal(css) -->
                 </div>
-                <div class="signup-link">Not a member? <a href="/register.html">SignUp Now</a></div>
+                <div class="signup-link">Not a member? <a href="register.html">SignUp Now</a></div>
             </form>
         </div>
     </div>

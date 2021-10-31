@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://css.gg/chevron-left.css' rel='stylesheet'>
+    <link href='https://css.gg/chevron-right.css' rel='stylesheet'>
+    <link rel="stylesheet" href="CSS/toolbar.css">
+    <title>Document</title>
+    <style>
+        #d_user_all {
+            width: 100%;
+            height: auto;
+            display: flex;
+            min-width: max-content;
+        }
+        
+        #user_first {
+            margin: 8% 5%;
+            width: 40%;
+            border: 1px solid black;
+            min-width: fit-content;
+        }
+        
+        .user_h2 {
+            margin-left: 5%;
+        }
+        
+        #user_second {
+            margin: 8% 5%;
+            width: 40%;
+            border: 1px solid black;
+        }
+        
+        .user_from {
+            margin: 3% 5%;
+            width: 90%;
+            height: 40px;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #div_a {
+            width: 30%;
+            height: 40px;
+            border: 1px solid black;
+            text-align: center;
+            margin: 0% 4.5% 2%;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #user_a {
+            font-size: 25px;
+            color: black;
+            text-decoration: none;
+        }
+        
+        #user_second_one {
+            width: 100%;
+            display: flex;
+        }
+        
+        #div_h2 {
+            width: 70%;
+            margin-right: 10%;
+        }
+        
+        #chuyenhuong {
+            width: 30%;
+            display: flex;
+            float: right;
+        }
+        
+        #left,
+        #right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            height: 30px;
+            margin-top: 15%;
+            border: 1px solid black;
+            border-radius: 10%;
+        }
+        
+        .div_img {
+            width: 20%;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #user_row_1,
+        #user_row_2 {
+            width: 100%;
+            margin-top: 5%;
+            text-align: center;
+            display: flex;
+        }
+        
+        .user_img {
+            width: 100%;
+            height: 110px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="header-contener">
+            <div class="contener">
+                <div class="side-left">
+                    <span>
+                        <a href="home.jsp" class="logo"><img id="logo_home" src="img/logo.svg" alt="logo"></a>
+                         <div id="DuckEdu">
+                             DUCK EDU
+                         </div>
+                    </span>
+                    <span>
+                        <div class="search">
+                            <form action="#" method="GET">
+                                <button class="icon btn-search " id="searchIcon" type="submit"><img src="./img/search.png" alt=""></button>
+                                <input type="text" id="searchInput" placeholder="Search">
+                            </form>
+                            <div class="list-result-search">
+                                <div class="result-search" id="a1" role="button" ><data>abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc</data></div>
+                                <div class="result-search" id="a2" role="button" >abc</div>
+                                <div class="result-search" id="a3" role="button" >abc</div>
+                                <div class="result-search" id="a4" role="button" >abc</div>
+                                <div class="result-search" id="a5" role="button" >abc</div>
+                                <div class="result-search" id="a6" role="button" >abc</div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="side-right">
+                    <div class="option">
+                        <nav>
+                            <ul class="header_ul">
+                                <li><img class="icon" src="img/message.png" alt="">
+                                    <ul class="drop">
+                                        <a href="message.html">
+                                            <li>
+                                                <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                            </li>
+                                        </a>
+                                        <a href="message.html">
+                                            <li>
+                                                <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                            </li>
+                                        </a>
+
+                                    </ul>
+                                </li>
+                                <li><img class="icon" src="img/bell.png" alt="">
+                                    <ul class="drop">
+                                        <li>
+                                            <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><img class="icon" src="img/setting.png" alt="">
+                                    <ul class="drop setting">
+                                        <a style="width: 100%;" href="user.jsp">
+                                            <li>
+                                                <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> User
+                                            </li>
+                                        </a>
+                                        <a style="width: 100%;" href="setting.jsp">
+                                            <li>
+                                                Setting page
+                                            </li>
+                                        </a>
+                                        <li>
+                                            Logout
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="d_user_all">
+        <div id="user_first">
+            <h2 class="user_h2">MY PROFILE</h2>
+            <div class="user_from">Username</div>
+            <div class="user_from">Name</div>
+            <div class="user_from">Date of Birth</div>
+            <div class="user_from">Email</div>
+            <div class="user_from">Address</div>
+            <div id="div_a"><a id="user_a" href="#">Edit</a></div>
+        </div>
+        <div id="user_second">
+            <div id="user_second_one">
+                <div id="div_h2">
+                    <h2 class="user_h2">CERTIFICATE</h2>
+                </div>
+                <div id="chuyenhuong">
+                    <div id="left"><a href=""><i class="gg-chevron-left"></i></a></div>
+                    <div id="right"><a href=""><i class="gg-chevron-right"></i></a></div>
+                </div>
+            </div>
+            <div id="user_row_1">
+                <div class="div_img">
+                    <img class="user_img" src="https://img.lovepik.com/element/45004/1281.png_860.png" alt=""> <br> Supject Name
+                </div>
+                <div class="div_img">
+                    <img class="user_img" src="https://img.lovepik.com/element/45004/1281.png_860.png" alt=""> <br> Supject Name
+                </div>
+                <div class="div_img">
+                    <img class="user_img" src="https://img.lovepik.com/element/45004/1281.png_860.png" alt=""> <br> Supject Name
+                </div>
+                <div class="div_img">
+                    <img class="user_img" src="https://img.lovepik.com/element/45004/1281.png_860.png" alt=""> <br> Supject Name
+                </div>
+            </div>
+            <div id="user_row_2">
+                <div class="div_img">
+                    <img class="user_img" src="https://img.lovepik.com/element/45004/1281.png_860.png" alt=""> <br> Supject Name
+                </div>
+                <div class="div_img">
+                    <img class="user_img" src="https://img.lovepik.com/element/45004/1281.png_860.png" alt=""> <br> Supject Name
+                </div>
+                <div class="div_img">
+                    <img class="user_img" src="https://img.lovepik.com/element/45004/1281.png_860.png" alt=""> <br> Supject Name
+                </div>
+                <div class="div_img">
+                    <img class="user_img" src="https://img.lovepik.com/element/45004/1281.png_860.png" alt=""> <br> Supject Name
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

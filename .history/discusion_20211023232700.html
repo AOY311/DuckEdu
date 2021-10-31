@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comment</title>
+    <link rel="stylesheet" href="comment.css" />
+
+    <script src="https://kit.fontawesome.com/a0a7c0f0d8.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="CSS/toolbar.css">
+    <style>
+        .disc {
+            margin-bottom: 100px;
+            padding: 0;
+            font-family: sans-serif;
+            max-width: 1024;
+        }
+        
+        .img-avt {
+            width: 50px;
+            padding: 10px;
+        }
+        
+        .ip-disc {
+            height: 40px;
+            padding: 6px;
+            margin: 10px 15px;
+            width: 70%;
+            outline: none;
+            resize: none;
+            max-height: 200px;
+        }
+        
+        .ip-disc::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .btn {
+            padding: 6px;
+            width: fit-content;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.25s;
+            margin: 0 4px;
+            outline: none;
+            border: none;
+        }
+        
+        .btn:hover {
+            background-color: rgb(190, 190, 190);
+        }
+        
+        .btn-like:hover {
+            background-color: #74b9ff;
+        }
+        
+        .btn-cmt:hover {
+            background-color: #55efc4;
+        }
+        
+        .body-disc {
+            padding: 8px;
+            margin-top: 11px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .posted-disc {
+            max-width: 1309px;
+        }
+        
+        .ur-new-cmt {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .posted-disc,
+        .ur-new-cmt,
+        .oth-cmted {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            text-align: justify;
+            justify-content: center;
+            position: relative;
+            margin-top: 40px;
+        }
+        
+        .line-disc {
+            padding: 6px;
+            width: 70%;
+            margin: 10px 15px;
+            outline: none;
+            resize: none;
+            border: none;
+        }
+        
+        .line-disc::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .disc-react {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .username {
+            position: absolute;
+            top: 5px;
+            left: 50px;
+        }
+        
+        .username::after {
+            content: "Username";
+            position: absolute;
+            top: 80%;
+            left: -10px;
+            font-size: 14px;
+            padding: 4px;
+        }
+        
+        .cmt-in-cmt {
+            padding: 20px 40px;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            padding-left: 10%;
+        }
+        
+        textarea[readonly="true"] {
+            height: fit-content;
+        }
+        
+        .error_ms {
+            display: block;
+        }
+        
+        #dis_checkIp {
+            margin-left: 150px;
+            margin-top: -2%;
+            color: red;
+            display: none;
+        }
+        
+        #com_checkIp {
+            margin-left: 150px;
+            color: red;
+            display: none;
+        }
+        
+        #container-discusion {
+            width: 1309px;
+        }
+        
+        .header-disc {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 25px;
+            padding-top: 25px;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+        }
+        
+        .active-like {
+            background-color: #74b9ff;
+            color: #fff;
+        }
+        
+        .active-cmt {
+            background-color: #55efc4;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body onload="hide_comment()">
+    <div class="header">
+        <nav class="header-contener">
+            <div class="contener">
+                <div class="side-left">
+                    <span>
+                        <a href="home.jsp" class="logo"><img id="logo_home" src="img/logo.svg" alt="logo"></a>
+                         <div id="DuckEdu">
+                             DUCK EDU
+                         </div>
+                    </span>
+                    <span>
+                        <div class="search">
+                            <form action="#" method="GET">
+                                <button class="icon btn-search " id="searchIcon" type="submit"><img src="./img/search.png" alt=""></button>
+                                <input type="text" id="searchInput" placeholder="Search">
+                            </form>
+                            <div class="list-result-search">
+                                <div class="result-search" id="a1" role="button" ><data>abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc</data></div>
+                                <div class="result-search" id="a2" role="button" >abc</div>
+                                <div class="result-search" id="a3" role="button" >abc</div>
+                                <div class="result-search" id="a4" role="button" >abc</div>
+                                <div class="result-search" id="a5" role="button" >abc</div>
+                                <div class="result-search" id="a6" role="button" >abc</div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="side-right">
+                    <div class="option">
+                        <nav>
+                            <ul class="header_ul">
+                                <li><img class="icon" src="img/message.png" alt="">
+                                    <ul class="drop">
+                                        <a href="message.html">
+                                            <li>
+                                                <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                            </li>
+                                        </a>
+                                        <a href="message.html">
+                                            <li>
+                                                <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                            </li>
+                                        </a>
+
+                                    </ul>
+                                </li>
+                                <li><img class="icon" src="img/bell.png" alt="">
+                                    <ul class="drop">
+                                        <li>
+                                            <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> some thing content there, Im handsome guy
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><img class="icon" src="img/setting.png" alt="">
+                                    <ul class="drop setting">
+                                        <a style="width: 100%;" href="user.jsp">
+                                            <li>
+                                                <img style="width: 25px; padding-right: 10px;" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /> User
+                                            </li>
+                                        </a>
+                                        <a style="width: 100%;" href="setting.jsp">
+                                            <li>
+                                                Setting page
+                                            </li>
+                                        </a>
+                                        <li>
+                                            Logout
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="disc" id="disc-id">
+        <!-- Your Input to Disscussion -->
+        <div class="header-disc">
+            <img src="./img/avt.png" alt="avatar" class="img-avt" />
+            <textarea placeholder="Your discussion..." class="ip-disc" id="post-discusion-value"></textarea>
+            <button type="submit" class="btn btn-post" id="post-discusion" onclick="postDiscusion()">
+            POST
+          </button>
+        </div>
+        <p id="dis_checkIp">INVALID</p>
+
+        <!-- Body Disscussion -->
+        <div class="body-disc">
+            <!-- add div right there -->
+            <div id="container-discusion"></div>
+            <!-- posted disscussion -->
+            <div class="posted-disc" id="test_id_2">
+                <div class="username">
+                    <img src="./img/avt.png" alt="avatar" class="img-avt" />
+                </div>
+                <textarea class="line-disc" id="test_id" readonly>
+    Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin rhoncus urna dictum.Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin rhoncus urna dictum
+    Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin rhoncus urna dictum.Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin rhoncus urna dictum
+            </textarea>
+                <button class="btn btn-edit" id="test_id_1" onclick="edit(this.id)">
+              EDIT
+            </button>
+            </div>
+            <div class="disc-react" id="post-form">
+                <button class="btn btn-like">
+              LIKE <i class="far fa-thumbs-up"></i>
+            </button>
+                <button class="btn btn-cmt" onclick="hide_comment()">
+              COMMENT <i class="far fa-comment-dots"></i>
+            </button>
+            </div>
+
+            <!-- Cmt in another post -->
+            <div class="cmt-in-cmt" id="myDIV">
+                <div class="ur-new-cmt">
+                    <div class="username">
+                        <img src="./img/avt.png" alt="avatar" class="img-avt" />
+                    </div>
+                    <textarea placeholder="Your discussion..." class="ip-disc" id="post-comment-value"></textarea>
+                    <button type="submit" class="btn btn-post" id="post-comment" onclick="postComment()">
+                POST
+              </button>
+                </div>
+                <p id="com_checkIp">INVALID</p>
+
+                <div id="container-comment"></div>
+
+                <div class="oth-cmted">
+                    <div class="username">
+                        <img src="./img/avt.png" alt="avatar" class="img-avt img-oth" />
+                    </div>
+                    <textarea class="line-disc" readonly>
+    Lorem ipsum dolor sit amet conse ctetur adip iscing elit Proin rhonc us urna dictum
+                </textarea>
+                    <button class="btn btn-like">
+                LIKE <i class="far fa-thumbs-up"></i>
+              </button>
+                </div>
+                <!-- <div class="disc-react">
+              </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const textarea = document.querySelectorAll("textarea");
+        textarea.forEach((element) => {
+            element.addEventListener("keydown", (e) => {
+                element.style.height = "40px";
+                let scHeight = e.target.scrollHeight;
+                element.style.height = `${scHeight}px`;
+            });
+        });
+
+        function resetArea(element) {
+            element.style.height = "40px";
+
+        }
+        window.onload = function() {
+            hide_comment();
+        };
+
+        function hide_comment() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function autoheight() {
+            $(".line-disc").each(function() {
+                $(this).height(this.scrollHeight);
+            });
+        }
+
+        $(document).ready(function() {
+            autoheight();
+        });
+
+        function postDiscusion() {
+            var ms = document.getElementById("dis_checkIp");
+            var textarea = document.getElementById("post-discusion-value");
+            var result = textarea.value;
+            if (!result.trim() == "") {
+                ms.style.display = "none";
+
+                jQuery("#container-discusion").append(
+                    '<div class="posted-disc"><div class="username"><img src="./img/avt.png" alt="avatar" class="img-avt" /></div>' +
+                    '<textarea class="line-disc" readonly>' +
+                    result +
+                    "</textarea>" +
+                    '<button class="btn btn-edit">EDIT</button></div><div class="disc-react"><button class="btn btn-like">LIKE <i class="far fa-thumbs-up"></i></button><button class="btn btn-cmt" onclick="hide_comment()">COMMENT <i class="far fa-comment-dots"></i></button></div>'
+                );
+                autoheight();
+            } else {
+                ms.style.display = "block";
+            }
+
+            textarea.value = "";
+            resetArea(textarea);
+            //clean text area when submit
+        }
+
+        function postComment() {
+            var ms = document.getElementById("com_checkIp");
+
+            var textarea = document.getElementById("post-comment-value");
+            var result = textarea.value;
+            if (!result.trim() == "") {
+                ms.style.display = "none";
+
+                jQuery("#container-comment").append(
+                    '<div class="oth-cmted"><div class="username"><img src="./img/avt.png" alt="avatar" class="img-avt img-oth" /></div>' +
+                    '<textarea  class="line-disc" readonly>' +
+                    result +
+                    "</textarea>" +
+                    '<button class="btn btn-like">LIKE <i class="far fa-thumbs-up"></i></div>'
+                );
+                autoheight();
+            } else {
+                ms.style.display = "block";
+            }
+            textarea.value = ""; //clean text area when submit
+            resetArea(textarea);
+
+        }
+
+        function edit() {
+            var elem = document.getElementById("test_id_1");
+            if (elem.innerHTML == "EDIT") {
+                elem.innerHTML = "DONE";
+                var area = document.getElementById("test_id");
+                area.readOnly = false;
+                area.style.borderStyle = "solid";
+
+
+            } else {
+                elem.innerHTML = "EDIT";
+                var area = document.getElementById("test_id");
+                area.readOnly = true;
+                area.style.borderStyle = "none";
+            }
+        }
+        $(document).ready(function() {
+            $(".btn-like").click(function() {
+                $(this).toggleClass("active-like");
+            });
+        });
+
+        $(document).ready(function() {
+            $(".btn-cmt").click(function() {
+                $(this).toggleClass("active-cmt");
+            });
+        });
+    </script>
+</body>
+
+</html>
